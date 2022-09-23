@@ -18,7 +18,7 @@ def detail():
     return render_template('detail.html')
 
 
-@app.route('/projectform')
+@app.route('/project-form')
 def project_form():
     return render_template('projectform.html')
 
