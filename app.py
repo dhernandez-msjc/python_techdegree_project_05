@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import (Flask, render_template,
+                   url_for, request)
 
 app = Flask(__name__)
 
@@ -18,8 +19,9 @@ def detail():
     return render_template('detail.html')
 
 
-@app.route('/project-form')
+@app.route('/project-form', methods=['GET', 'POST'])
 def project_form():
+    print(request.form)
     return render_template('projectform.html')
 
 
