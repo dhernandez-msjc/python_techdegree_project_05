@@ -41,9 +41,10 @@ def edit(id):
 
 @app.route('/project/<id>/delete')
 def delete(id):
-    projects = Project.query.all()
     project = Project.query.get(id)
-    return render_template('detail.html', projects=projects, project=project)
+    db.session.delete(project)
+    db.session.commit()
+    return redirect(url_for('index'))
 
 
 @app.route('/project/new', methods=['GET', 'POST'])
@@ -58,6 +59,11 @@ def create():
         db.session.commit()
         redirect(url_for('index'))
     return render_template('projectform.html', projects=projects)
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html', msg=error), 404
 
 
 if __name__ == '__main__':
