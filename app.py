@@ -58,7 +58,7 @@ def create():
                               github_link=request.form['github'])
         db.session.add(new_project)
         db.session.commit()
-        redirect(url_for('index'))
+        return redirect(url_for('index'))
     return render_template('projectform.html', projects=projects)
 
 
