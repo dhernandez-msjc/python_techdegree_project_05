@@ -53,7 +53,8 @@ def create():
     if request.form:
         new_project = Project(title=request.form['title'],
                               completed=datetime.datetime.strptime(request.form['date'], '%m/%d/%Y'),
-                              description=request.form['desc'], skills=request.form['skills'],
+                              description=request.form['desc'],
+                              skills=request.form['skills'],
                               github_link=request.form['github'])
         db.session.add(new_project)
         db.session.commit()
