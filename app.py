@@ -29,7 +29,7 @@ def edit(id):
 
     if request.form:
         project.title = request.form['title']
-        project.completed = datetime.datetime.strptime(request.form['date'], '%m/%d/%Y')
+        project.completed = datetime.datetime.strptime(request.form['date'], '%Y-%m-%d')
         project.description = request.form['desc']
         project.skills = request.form['skills']
         project.github_link = request.form['github']
@@ -51,7 +51,7 @@ def create():
     projects = Project.query.all()
     if request.form:
         new_project = Project(title=request.form['title'],
-                              completed=datetime.datetime.strptime(request.form['date'], '%m/%d/%Y'),
+                              completed=datetime.datetime.strptime(request.form['date'], '%Y-%m-%d'),
                               description=request.form['desc'],
                               skills=request.form['skills'],
                               github_link=request.form['github'])
